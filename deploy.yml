@@ -40,7 +40,7 @@ spec:
         - name: MYSQL_USER
           value: "guacamole"
         - name: MYSQL_PASSWORD
-          value: "21121986
+          value: "21121986"
         - name: MYSQL_DATABASE
           value: "guacamole"
         ports:
