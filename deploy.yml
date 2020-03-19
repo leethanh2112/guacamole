@@ -68,7 +68,7 @@ spec:
       - name: guacamole
         image: guacamole/guacamole:latest
         env:
-        - name: MYSQL_HOST
+        - name: MYSQL_HOSTNAME
           value: "mysql.database"
         - name: MYSQL_PORT
           value: "3306"
