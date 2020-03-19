@@ -42,6 +42,4 @@ spec:
           value: "21121986
         - name: MYSQL_DATABASE
           value: "guacamole"
-        ports:
-        - containerPort: 8080
-          name: guacamole
+
