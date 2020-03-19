@@ -62,8 +62,8 @@ spec:
   selector:
     app:  guacamole-guacd
   clusterIP: None
-----
-apiVersion: apps/v1 
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guacamole-guacd
