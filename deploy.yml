@@ -1,6 +1,41 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: guacamole-guacd
+  namespace: system-uat
+spec:
+  ports:
+  - port: 4822
+  selector:
+    app:  guacamole-guacd
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guacamole-guacd
+  namespace: system-uat
+spec:
+  selector:
+    matchLabels:
+      app: guacamole-guacd
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: guacamole-guacd
+    spec:
+      containers:
+      - image: guacamole/guacd:latest
+        name: guacamole-guacd
+        ports:
+        - containerPort: 4822
+          name: guacamole-guacd
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: guacamole
   namespace: system-uat
 spec:
@@ -50,38 +85,4 @@ spec:
         ports:
         - containerPort: 8080
           name: guacamole
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: guacamole-guacd
-  namespace: system-uat
-spec:
-  ports:
-  - port: 4822
-  selector:
-    app:  guacamole-guacd
-  clusterIP: None
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: guacamole-guacd
-  namespace: system-uat
-spec:
-  selector:
-    matchLabels:
-      app: guacamole-guacd
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: guacamole-guacd
-    spec:
-      containers:
-      - image: guacamole/guacd:latest
-        name: guacamole-guacd
-        ports:
-        - containerPort: 4822
-          name: guacamole-guacd
+
