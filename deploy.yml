@@ -6,31 +6,32 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - targetPort:8080
-    port:8080
-    nodePort:38080
+    - targetPort: 8080
+      port: 8080
+      nodePort: 30080
   selector:
     app: guacamole
 ---
-apiVersion: apps/v1 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: guacamole
   namespace: system-uat
+  labels:
+   app: guacamole
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: guacamole
-  strategy:
-    type: Recreate
+      app: guacamole	
   template:
     metadata:
       labels:
         app: guacamole
     spec:
       containers:
-      - image: guacamole/guacamole:latest
-        name: guacamole
+      - name: guacamole
+        image: guacamole/guacamole:latest
         env:
         - name: MYSQL_HOST
           value: "mysql.database"
@@ -45,3 +46,4 @@ spec:
         ports:
         - containerPort: 8080
           name: guacamole
+
