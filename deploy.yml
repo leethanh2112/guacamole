@@ -7,7 +7,7 @@ spec:
   type: NodePort
   ports:
   - targetPort:8080
-    port: 8080
+    port:8080
     nodePort:38080
   selector:
     app: guacamole
@@ -42,4 +42,6 @@ spec:
           value: "21121986
         - name: MYSQL_DATABASE
           value: "guacamole"
-
+        ports:
+        - containerPort: 8080
+          name: guacamole
