@@ -116,7 +116,7 @@ spec:
           name: guacamole
         volumeMounts:
         - name: guacamole-rcd
-          mountPath: /usr/local/tomcat
+          mountPath: /usr/local/tomcat/webapps
       volumes:
       - name: guacamole-rcd
         persistentVolumeClaim:
