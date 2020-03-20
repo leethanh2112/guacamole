@@ -1,0 +1,1 @@
+Move whole player folder to: /var/lib/tomcat/webapps/

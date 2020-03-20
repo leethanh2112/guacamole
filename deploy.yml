@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy:
     Retain
   nfs:
-    path: /tmp/data/guacamole
+    path: /tmp/data/guacamole/record
     server: 10.0.15.1
     readOnly: false
 ---
@@ -95,7 +95,7 @@ spec:
     spec:
       containers:
       - name: guacamole
-        image: guacamole/guacamole:latest
+        image: docker.registry.local:5000/guacamole:v1.${BUILD_NUMBER}
         env:
         - name: MYSQL_HOSTNAME
           value: "mysql.database"
@@ -116,7 +116,7 @@ spec:
           name: guacamole
         volumeMounts:
         - name: guacamole-rcd
-          mountPath: /usr/local/tomcat/webapps/player
+          mountPath: /usr/local/tomcat/webapps/player/video
       volumes:
       - name: guacamole-rcd
         persistentVolumeClaim:
