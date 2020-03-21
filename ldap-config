@@ -1,0 +1,35 @@
+docker run --restart=always --name guacamole --link guacd:guacd \
+
+    --link mysql:mysql       \
+
+    -e LDAP_HOSTNAME=controleur.domaine.fr                   \
+
+    -e LDAP_PORT=389                   \
+
+    -e LDAP_GROUP_BASE_DN=OU=Guacamole,OU=Application,OU=Groupes\ domaine,DC=domaine,DC=fr                   \
+
+    -e LDAP_USER_BASE_DN=ou=utilisateurs,dc=domaine,dc=fr        \
+
+    -e LDAP_SEARCH_BIND_DN=CN=Recherche-LDAP,OU=LDAP,OU=Administration\ DSI,DC=domaine,DC=fr \
+
+    -e LDAP_SEARCH_BIND_PASSWORD=domainePWD        \
+
+    -e LDAP_USERNAME_ATTRIBUTE=sAMAccountName        \
+
+    -e MYSQL_HOSTNAME=localhost   \
+
+    -e MYSQL_PORT=3306   \
+
+    -e MYSQL_DATABASE=guacamole_db  \
+
+    -e MYSQL_USER=guacamole_user    \
+
+    -e MYSQL_PASSWORD=mysqlPWD \
+
+    -v /home/alain/guac2_home:/guacamole_home   \
+
+    -v /home/alain/videos:/etc/videos   \
+
+    -e GUACAMOLE_HOME=/guacamole_home \
+
+    -d -p 8080:8080 guacamole/guacamole
