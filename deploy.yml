@@ -7,7 +7,7 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   persistentVolumeReclaimPolicy:
     Retain
   nfs:
@@ -22,7 +22,7 @@ metadata:
   namespace: system-uat
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
      requests:
        storage: 10Gi
