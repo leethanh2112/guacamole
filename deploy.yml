@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy:
     Retain
   nfs:
-    path: /tmp/data/guacamole/record
+    path: /tmp/data/guacamole/video
     server: 10.0.15.1
     readOnly: false
 ---
