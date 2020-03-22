@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: guacamole-rcd
+  name: guacamole-playback
   namespace: system-uat
 spec:
   capacity:
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: guacamole-rcd
+  name: guacamole-playback
   namespace: system-uat
 spec:
   accessModes:
@@ -80,9 +80,9 @@ spec:
         - containerPort: 8080
           name: guacamole
         volumeMounts:
-        - name: guacamole-rcd
+        - name: guacamole-playback
           mountPath: /usr/local/tomcat/webapps/player/video
       volumes:
-      - name: guacamole-rcd
+      - name: guacamole-playback
         persistentVolumeClaim:
-          claimName: guacamole-rcd
+          claimName: guacamole-playback
